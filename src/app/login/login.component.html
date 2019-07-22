@@ -1,33 +1,26 @@
-<h2 fxLayoutAlign="center">Welcome</h2>
+<h2 fxLayoutAlign="center">Welcome back!</h2>
 <div fxLayoutAlign="center">
-    <form class="example-form" action="">
+    <form class="example-form" [formGroup]="loginForm" (ngSubmit)="loginUser()">
         <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="30px" fxLayoutAlign="center">
-            <div fxFlex="50%">
+            <div fxFlexFill>
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Name">
-                </mat-form-field>
-            </div>
-            <div fxFlex="50%">
-                <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Email">
+                    <input matInput placeholder="Email" formControlName="email">
                 </mat-form-field>
             </div>
         </div>
         <div id="second" fxLayout="row" fxLayout.xs="column" fxLayoutGap="30px" fxLayoutAlign="center">
-            <div fxFlex="50%">
+            <div fxFlexFill>
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Password">
-                </mat-form-field>
-            </div>
-            <div fxFlex="50%">
-                <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Confirm Password">
+                    <input matInput placeholder="Password" formControlName="password">
                 </mat-form-field>
             </div>
         </div>
         <div fxLayout="row" fxLayout.xs="column">
             <div fxFlexFill>
-                <button mat-flat-button color="primary" fxFlexFill>Primary</button>
+                <button type="submit" mat-flat-button color="primary" fxFlexFill>Primary</button>
+                <p>New user?
+                        <a (click)="toRegister()">Register</a>
+                      </p>
             </div>
         </div>
         
