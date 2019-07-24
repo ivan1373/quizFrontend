@@ -1,0 +1,48 @@
+<div>
+    <div fxLayout="row" fxLayoutAlign="center center" class="content">
+        <mat-card class="card" >
+          <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+            <h3>New Quiz</h3>
+          </mat-card-title>
+          <mat-card-content>
+            <div fxLayoutAlign="center">
+                <form class="example-form" [formGroup]="quizForm" (ngSubmit)="addQuiz()">
+                    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="30px" fxLayoutAlign="center">
+                        <div fxFlexFill>
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Title" formControlName="title">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="30px" fxLayoutAlign="center">
+                        <div fxFlexFill>
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Description" formControlName="description">
+                            </mat-form-field>
+                        </div>
+                    </div><br>
+                    <div fxLayout="row" fxLayout.xs="column">
+                        <div fxFlexFill>
+                            <button type="submit" mat-flat-button color="primary" fxFlexFill><mat-icon>add</mat-icon> Create</button>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    <br>
+      <div class="container">
+          <div class="container">
+            <div fxLayout="column" fxLayoutGap="20px" fxLayout.gt-md="row"  fxLayoutAlign="space-around center" class="content">
+                <div class="blocks">
+                    <button mat-raised-button color="accent" (click)="toQuizzes()">
+                        <mat-icon>arrow_left</mat-icon> Back
+                    </button>
+                </div>
+          </div>
+      </div>
+    <br>
+</div>

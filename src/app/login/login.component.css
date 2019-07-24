@@ -21,3 +21,9 @@ form:first-child {
 h2 {
     padding-top:25px;
 }
+
+a:hover {
+  cursor: pointer;
+  color:blue;
+  font-weight: bold;
+}

@@ -6,8 +6,8 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a *ngIf="authenticationService.currentTokenValue === null" mat-list-item routerLink="login" routerLinkActive="active">Login</a>
-      <a *ngIf="authenticationService.currentTokenValue === null" mat-list-item routerLink="register" routerLinkActive="active">Register</a>
+      <a *ngIf="authenticationService.currentTokenValue === null" mat-list-item routerLink="login">Login</a>
+      <a *ngIf="authenticationService.currentTokenValue === null" mat-list-item routerLink="register">Register</a>
       <a *ngIf="authenticationService.currentTokenValue !== null" (click)="logoutUser()" mat-list-item>Logout</a>
     </mat-nav-list>
   </mat-sidenav>
@@ -24,13 +24,16 @@
       <span routerLink="" routerLinkActive="active">QuizApp</span>
 
       <span class="example-spacer"></span>
-      <button mat-button routerLink="quiz" routerLinkActive="active">Quizzes</button>
-      <button mat-button *ngIf="displayUserMenu$ | async" [matMenuTriggerFor]="animals">User</button>
-      <mat-menu #animals="matMenu">
-      <button *ngIf="authenticationService.currentTokenValue === null" mat-menu-item routerLink="login" routerLinkActive="active">Login</button>
-      <button *ngIf="authenticationService.currentTokenValue === null" mat-menu-item routerLink="register" routerLinkActive="active">Register</button>
-      <button *ngIf="authenticationService.currentTokenValue !== null" mat-menu-item (click)="logoutUser()">Logout</button>
-      </mat-menu>
+      <div *ngIf="displayUserMenu$ | async">
+        <button mat-button routerLink="quiz" routerLinkActive="active">Quizzes</button>
+        <button mat-button [matMenuTriggerFor]="animals">User</button>
+        <mat-menu #animals="matMenu">
+          <button *ngIf="authenticationService.currentTokenValue === null" mat-menu-item routerLink="login">Login</button>
+          <button *ngIf="authenticationService.currentTokenValue === null" mat-menu-item routerLink="register">Register</button>
+          <button *ngIf="authenticationService.currentTokenValue !== null" mat-menu-item (click)="logoutUser()">Logout</button>
+        </mat-menu>
+      </div>
+      
     </mat-toolbar>
     <!-- Add Content Here -->
   </mat-sidenav-content>

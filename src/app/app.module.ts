@@ -16,12 +16,14 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { QuizComponent } from './quiz/quiz.component';
+import { CreateQuizComponent } from './create-quiz/create-quiz.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'quiz', component: QuizComponent}
+  { path: 'quiz', component: QuizComponent},
+  { path: 'quiz/new', component: CreateQuizComponent}
 ];
 
 @NgModule({
@@ -31,7 +33,8 @@ const appRoutes: Routes = [
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    QuizComponent
+    QuizComponent,
+    CreateQuizComponent
   ],
   imports: [
     BrowserModule,
