@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, share } from 'rxjs/operators';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -21,6 +23,13 @@ export class NavigationComponent {
     share()
   )
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, private router: Router,
+    public authenticationService: AuthService) {}
+
+  logoutUser() {
+    this.authenticationService.logout();
+    this.router.navigate(['/login']);
+    
+  }
 
 }

@@ -3,13 +3,14 @@ import { Token } from '../model/token';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../model/user';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  ROOT_URL = 'https://angularnote.herokuapp.com/api/v1';
+  ROOT_URL = 'http://127.0.0.1:8000/api/v1';
   private currentTokenSubject: BehaviorSubject<Token>;
   
 

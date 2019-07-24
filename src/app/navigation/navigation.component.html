@@ -6,8 +6,9 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#">Login</a>
-      <a mat-list-item href="#">Register</a>
+      <a *ngIf="authenticationService.currentTokenValue === null" mat-list-item routerLink="login" routerLinkActive="active">Login</a>
+      <a *ngIf="authenticationService.currentTokenValue === null" mat-list-item routerLink="register" routerLinkActive="active">Register</a>
+      <a *ngIf="authenticationService.currentTokenValue !== null" (click)="logoutUser()" mat-list-item>Logout</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -23,11 +24,12 @@
       <span routerLink="" routerLinkActive="active">QuizApp</span>
 
       <span class="example-spacer"></span>
-
+      <button mat-button routerLink="quiz" routerLinkActive="active">Quizzes</button>
       <button mat-button *ngIf="displayUserMenu$ | async" [matMenuTriggerFor]="animals">User</button>
       <mat-menu #animals="matMenu">
-      <button mat-menu-item routerLink="login" routerLinkActive="active">Login</button>
-      <button mat-menu-item routerLink="register" routerLinkActive="active">Register</button>
+      <button *ngIf="authenticationService.currentTokenValue === null" mat-menu-item routerLink="login" routerLinkActive="active">Login</button>
+      <button *ngIf="authenticationService.currentTokenValue === null" mat-menu-item routerLink="register" routerLinkActive="active">Register</button>
+      <button *ngIf="authenticationService.currentTokenValue !== null" mat-menu-item (click)="logoutUser()">Logout</button>
       </mat-menu>
     </mat-toolbar>
     <!-- Add Content Here -->

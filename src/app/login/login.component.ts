@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { first } from 'rxjs/operators';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router,
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    /*private as: AuthService*/) { }
+    private as: AuthService) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -40,7 +42,7 @@ export class LoginComponent implements OnInit {
   {
         console.log(this.f.email.value, this.f.password.value);
         // stop here if form is invalid
-       /* if (this.loginForm.invalid) {
+        if (this.loginForm.invalid) {
             return;
         }
 
@@ -53,7 +55,7 @@ export class LoginComponent implements OnInit {
                 },
                 error => {
                     console.log(error);
-                });*/
+                });
   }
 
 }
