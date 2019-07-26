@@ -15,9 +15,9 @@ export class QuizService {
   
   
 
-  /*store(title: string, content: string) {
-    return this.http.post<Note>(`${this.ROOT_URL}/create`, { title, content });
-  }*/
+  store(title: string, description: string) {
+    return this.http.post<Quiz>(`${this.ROOT_URL}/create`, { title, description });
+  }
 
   getAll(): Observable<Quiz[]>{
     return this.http.get<Quiz[]>(this.ROOT_URL);

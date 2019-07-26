@@ -10,6 +10,8 @@ import { QuizService } from '../services/quiz.service';
 export class QuizComponent implements OnInit {
 
   quizzes: Quiz[] = [];
+
+  displayedColumns: string[] = ['id', 'title', 'description', 'action'];
   constructor(private qService: QuizService) {
     
    }
