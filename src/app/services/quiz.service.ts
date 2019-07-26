@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Quiz } from '../model/quiz';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +17,12 @@ export class QuizService {
 
   /*store(title: string, content: string) {
     return this.http.post<Note>(`${this.ROOT_URL}/create`, { title, content });
-  }
+  }*/
 
-  getAll(): Observable<Note>{
-    return this.http.get<Note>(this.ROOT_URL);
+  getAll(): Observable<Quiz[]>{
+    return this.http.get<Quiz[]>(this.ROOT_URL);
   }
-
+/*
   updateNote (title: string, content: string, id: number): Observable<Note> {
     return this.http.put<Note>(`${this.ROOT_URL}/${id}/edit`, { title, content })
       .pipe(

@@ -17,7 +17,9 @@
             <h3>Quizzes List</h3>
           </mat-card-title>
           <mat-card-content>
-              
+              <ul>
+                <li *ngFor="let quiz of quizzes">{{quiz.id}}</li>
+              </ul>
           </mat-card-content>
         </mat-card>
       </div>
