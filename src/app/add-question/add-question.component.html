@@ -1,0 +1,80 @@
+<div fxLayoutAlign="center">
+    <form class="example-form" (ngSubmit)="addQuiz()">
+        
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="30px" fxLayoutAlign="center">
+            <div fxFlexFill>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Enter Question">
+                </mat-form-field>
+            </div>
+        </div><br>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="30px" fxLayoutAlign="center">
+            <div fxFlexFill>
+                <label id="example-radio-group-label">Number of options</label><br>
+              <!--  <mat-radio-group class="example-full-width" aria-label="Select an option">
+                    <mat-radio-button value="2">2</mat-radio-button><br>
+                    <mat-radio-button value="3">3</mat-radio-button><br>
+                    <mat-radio-button value="4">4</mat-radio-button>
+                </mat-radio-group>-->
+                <mat-radio-group
+                    aria-labelledby="example-radio-group-label"
+                    class="example-radio-group"
+                    [(ngModel)]="selectedNumOfOptions" name="something">
+                    <mat-radio-button class="example-radio-button" *ngFor="let option of options" [value]="option">
+                        {{option}}
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div><br>
+        <div *ngIf="selectedNumOfOptions == 2" fxLayout="row" fxLayout.xs="column" fxLayoutGap="30px" fxLayoutAlign="center">
+            <div fxFlexFill>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Enter Option1">
+                </mat-form-field>
+            
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Enter Correct Answer">
+                </mat-form-field>
+            </div>
+        </div>
+        <div *ngIf="selectedNumOfOptions == 3" fxLayout="row" fxLayout.xs="column" fxLayoutGap="30px" fxLayoutAlign="center">
+            <div fxFlexFill>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Enter Option1">
+                </mat-form-field>
+                
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Enter Option2">
+                    </mat-form-field>
+                
+                
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Enter Correct Answer">
+                    </mat-form-field>
+            </div>
+        </div>
+        <div *ngIf="selectedNumOfOptions == 4" fxLayout="row" fxLayout.xs="column" fxLayoutGap="30px" fxLayoutAlign="center">
+            <div fxFlexFill>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Enter Option1">
+                </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Enter Option2">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Enter Option3">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Enter Correct Answer">
+                    </mat-form-field>
+            </div>
+        </div><br>
+        <div fxLayout="row" fxLayout.xs="column">
+            <div fxFlexFill>
+                <button type="submit" mat-flat-button color="primary" fxFlexFill><mat-icon>add</mat-icon> Create</button>
+                
+            </div>
+        </div><br>
+        <mat-spinner *ngIf="loading"></mat-spinner>
+    </form>
+</div>

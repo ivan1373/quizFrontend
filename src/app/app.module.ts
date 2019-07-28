@@ -17,6 +17,7 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { QuizComponent } from './quiz/quiz.component';
 import { CreateQuizComponent } from './create-quiz/create-quiz.component';
+import { AddQuestionComponent } from './add-question/add-question.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
     RegisterComponent,
     HomeComponent,
     QuizComponent,
-    CreateQuizComponent
+    CreateQuizComponent,
+    AddQuestionComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +53,7 @@ const appRoutes: Routes = [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     //{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AddQuestionComponent]
 })
 export class AppModule { }

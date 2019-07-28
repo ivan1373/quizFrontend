@@ -4,4 +4,5 @@ export interface Quiz {
     description: string;
     created_at: Date;
     updated_at: Date;
+    question_count: number;
 }

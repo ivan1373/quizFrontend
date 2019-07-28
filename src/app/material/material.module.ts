@@ -13,6 +13,9 @@ import {MatCardModule} from '@angular/material/card';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTableModule} from '@angular/material/table';
 //import {MatPaginator} from '@angular/material/paginator';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatRadioModule} from '@angular/material/radio';
+
 
 
 
@@ -35,6 +38,8 @@ import {MatTableModule} from '@angular/material/table';
     MatProgressSpinnerModule,
     MatTableModule,
     //MatPaginator
+    MatDialogModule,
+    MatRadioModule
   ]
 })
 export class MaterialModule { }
