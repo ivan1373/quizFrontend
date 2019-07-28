@@ -15,6 +15,8 @@ import {MatTableModule} from '@angular/material/table';
 //import {MatPaginator} from '@angular/material/paginator';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 
 
@@ -39,7 +41,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatTableModule,
     //MatPaginator
     MatDialogModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSnackBarModule
   ]
 })
 export class MaterialModule { }

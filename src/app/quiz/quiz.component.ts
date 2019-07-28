@@ -4,6 +4,7 @@ import { QuizService } from '../services/quiz.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddQuestionComponent } from '../add-question/add-question.component';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-quiz',
@@ -17,7 +18,7 @@ export class QuizComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'title', 'description', 'question_count', 'action', 'delete'];
   
-  constructor(private qService: QuizService, private dialog: MatDialog) {
+  constructor(private qService: QuizService, private dialog: MatDialog, private _snackBar: MatSnackBar) {
     
    }
 
@@ -37,6 +38,23 @@ export class QuizComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  deleteQuiz(id:number){
+    this.qService.destroyQuiz(id).subscribe(
+      data => {
+        this.setQuizzes();
+      }
+    );
+  }
+
+  onDelete(event: Event, id: number){
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    this.deleteQuiz(id);
+    this._snackBar.open('Quiz deleted successfully!','',{
+      duration: 2000
+    });
   }
 
   openDialog() {

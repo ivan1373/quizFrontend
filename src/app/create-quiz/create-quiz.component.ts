@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { QuizService } from '../services/quiz.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-quiz',
@@ -16,7 +17,8 @@ export class CreateQuizComponent implements OnInit {
 
   constructor(private router: Router,
     private fb: FormBuilder,
-    private qService: QuizService) { }
+    private qService: QuizService,
+    private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.quizForm = this.fb.group({
@@ -48,6 +50,9 @@ export class CreateQuizComponent implements OnInit {
         this.submitted = true;
         this.loading = false;
         this.quizForm.reset();
+        this._snackBar.open('Quiz created successfully!','',{
+          duration: 2000
+        });
       }
     )
   }

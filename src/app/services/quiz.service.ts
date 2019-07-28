@@ -33,8 +33,8 @@ export class QuizService {
   show(id: number) {
     return this.http.get<Note>(`${this.ROOT_URL}/${id}`);
   }
-
-  destroyNote(id: number): Observable<{}> {
+*/
+  destroyQuiz(id: number): Observable<{}> {
     return this.http.delete(`${this.ROOT_URL}/${id}`);
-  }*/
+  }
 }
