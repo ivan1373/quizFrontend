@@ -1,10 +1,10 @@
 <div fxLayoutAlign="center">
-    <form class="example-form" (ngSubmit)="addQuiz()">
+    <form class="example-form"  [formGroup]="questionForm"  (ngSubmit)="SaveData()">
         
         <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="30px" fxLayoutAlign="center">
             <div fxFlexFill>
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Enter Question">
+                    <input matInput placeholder="Enter Question" formControlName="description">
                 </mat-form-field>
             </div>
         </div><br>
@@ -19,7 +19,7 @@
                 <mat-radio-group
                     aria-labelledby="example-radio-group-label"
                     class="example-radio-group"
-                    [(ngModel)]="selectedNumOfOptions" name="something">
+                    [(ngModel)]="selectedNumOfOptions" name="something" [ngModelOptions]="{standalone: true}" (change)="handleChange($event)">
                     <mat-radio-button class="example-radio-button" *ngFor="let option of options" [value]="option">
                         {{option}}
                     </mat-radio-button>
@@ -27,45 +27,45 @@
             </div>
         </div><br>
         <div *ngIf="selectedNumOfOptions == 2" fxLayout="row" fxLayout.xs="column" fxLayoutGap="30px" fxLayoutAlign="center">
-            <div fxFlexFill>
-                <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Enter Option1">
+            <div fxFlexFill formArrayName="optionDetails">
+                <mat-form-field formGroupName="0" class="example-full-width">
+                    <input matInput placeholder="Enter Option1" formControlName="option">
                 </mat-form-field>
             
-                <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Enter Correct Answer">
+                <mat-form-field formGroupName="1" class="example-full-width">
+                    <input matInput placeholder="Enter Correct Answer" formControlName="option">
                 </mat-form-field>
             </div>
         </div>
         <div *ngIf="selectedNumOfOptions == 3" fxLayout="row" fxLayout.xs="column" fxLayoutGap="30px" fxLayoutAlign="center">
-            <div fxFlexFill>
-                <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Enter Option1">
+            <div fxFlexFill formArrayName="optionDetails">
+                <mat-form-field formGroupName="0" class="example-full-width">
+                    <input matInput placeholder="Enter Option1" formControlName="option">
                 </mat-form-field>
                 
-                    <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Enter Option2">
+                    <mat-form-field formGroupName="1" class="example-full-width">
+                        <input matInput placeholder="Enter Option2" formControlName="option">
                     </mat-form-field>
                 
                 
-                    <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Enter Correct Answer">
+                    <mat-form-field formGroupName="2" class="example-full-width">
+                        <input matInput placeholder="Enter Correct Answer" formControlName="option">
                     </mat-form-field>
             </div>
         </div>
         <div *ngIf="selectedNumOfOptions == 4" fxLayout="row" fxLayout.xs="column" fxLayoutGap="30px" fxLayoutAlign="center">
-            <div fxFlexFill>
-                <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Enter Option1">
+            <div fxFlexFill formArrayName="optionDetails">
+                <mat-form-field formGroupName="0" class="example-full-width">
+                    <input matInput placeholder="Enter Option1" formControlName="option">
                 </mat-form-field>
-                    <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Enter Option2">
+                    <mat-form-field formGroupName="1" class="example-full-width">
+                        <input matInput placeholder="Enter Option2" formControlName="option">
                     </mat-form-field>
-                    <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Enter Option3">
+                    <mat-form-field formGroupName="2" class="example-full-width">
+                        <input matInput placeholder="Enter Option3" formControlName="option">
                     </mat-form-field>
-                    <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Enter Correct Answer">
+                    <mat-form-field formGroupName="3" class="example-full-width">
+                        <input matInput placeholder="Enter Correct Answer" formControlName="option">
                     </mat-form-field>
             </div>
         </div><br>
