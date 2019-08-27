@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Quiz } from '../model/quiz';
 import { QuizService } from '../services/quiz.service';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { AddQuestionComponent } from '../add-question/add-question.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -15,6 +15,8 @@ export class QuizComponent implements OnInit {
 
   //quizzes: Quiz[] = [];
   dataSource = new MatTableDataSource();
+
+  //dialogRef: MatDialogRef;
 
   displayedColumns: string[] = ['id', 'title', 'description', 'question_count', 'action', 'delete'];
   
@@ -57,7 +59,7 @@ export class QuizComponent implements OnInit {
     });
   }
 
-  openDialog() {
+  openDialog(id: number) {
 
     const dialogConfig = new MatDialogConfig();
 
@@ -65,7 +67,14 @@ export class QuizComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = '500px';
     //dialogConfig.height = '300px';
-    this.dialog.open(AddQuestionComponent, dialogConfig);
+    dialogConfig.data = {
+      quiz_id: id
+    };
+    let dialogRef = this.dialog.open(AddQuestionComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.setQuizzes(); 
+    });
 }
 
   

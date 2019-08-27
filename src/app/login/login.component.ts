@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   returnUrl: any;
 
+  error = false;
+
   constructor(private router: Router,
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -21,13 +23,11 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      email: ['', [
-        Validators.required,
-      ]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [
         Validators.required
       ]]
-    })
+    });
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
 
   loginUser()
   {
-        console.log(this.f.email.value, this.f.password.value);
+        console.log(this.f.email.value);
         // stop here if form is invalid
         if (this.loginForm.invalid) {
             return;
@@ -51,10 +51,12 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                    this.router.navigate([this.returnUrl]);
+                  this.error = false;
+                  this.router.navigate([this.returnUrl]);
                 },
                 error => {
-                    console.log(error);
+                  //console.log(error);
+                  this.error = true;
                 });
   }
 

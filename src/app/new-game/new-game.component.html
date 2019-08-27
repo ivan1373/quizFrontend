@@ -1,0 +1,77 @@
+<!--<ul *ngFor="let question of QuizList">
+    <li>{{question.qid}} {{question.question_description}}
+        <ul *ngFor="let option of question[0]">
+            {{option.description}}
+        </ul>
+    </li>
+</ul>-->
+<!--<div id="main" fxLayout="row" fxLayout.xs="column" fxLayoutGap="30px" fxLayoutAlign="center">
+<form  *ngIf="gameForm" [formGroup]="gameForm"  (ngSubmit)="SaveData()">
+<mat-horizontal-stepper formArrayName="gameAnswers" labelPosition="bottom" #stepper>
+    <div id="step-div" *ngFor="let question of QuizList;let i = index;">
+        <mat-step [formGroupName]="i" [stepControl]="gameAnswers.get([i])">
+                    <ng-template matStepLabel>Question {{i}}</ng-template>-->
+                   <!-- <label id="example-radio-group-label">{{question.question_description}}</label>
+                    <mat-radio-group
+                    aria-labelledby="example-radio-group-label"
+                    class="example-radio-group"
+                    name="{{ 'option ' + i}}"
+                    formControlName="option"
+                    >
+                    <mat-radio-button class="example-radio-button" *ngFor="let option of question[0]" [value]="option.iscorrect">
+                        {{option.description}}
+                    </mat-radio-button>
+                    </mat-radio-group>
+                    <div>
+                        <button *ngIf="i!==0" mat-button class="back" matStepperPrevious>Back</button>
+                        <button *ngIf="i===QuizList.length-1" mat-button class="submit" type="submit">Submit</button>&nbsp;
+                        <button *ngIf="i!==QuizList.length-1" mat-button class="next" type="button" matStepperNext>Next</button>          
+                    </div>
+        </mat-step>
+    </div>
+    
+</mat-horizontal-stepper>
+</form>
+</div>-->
+<div fxLayoutAlign="center">
+    <mat-card class="card" >
+    <mat-card-title fxLayoutAlign="center" fxLayout.gt-xs="row" fxLayout.xs="column">
+        <h2>Good Luck!</h2>
+    </mat-card-title>
+    <mat-card-content fxLayoutAlign="center">
+    <form  *ngIf="gameForm" class="example-form" [formGroup]="gameForm"  (ngSubmit)="SaveData()">
+        <div fxLayout="row" fxLayoutGap="30px" fxLayoutAlign="center">
+            
+            <mat-horizontal-stepper formArrayName="gameAnswers" labelPosition="bottom" #stepper>
+                <div id="step-div" *ngFor="let question of QuizList;let i = index;">
+                    <mat-step [formGroupName]="i" [stepControl]="gameAnswers.get([i])">
+                               <!-- <ng-template matStepLabel>Question {{i}}</ng-template>-->
+                                <label id="example-radio-group-label">{{question.question_description}}</label>
+                                <mat-radio-group
+                                aria-labelledby="example-radio-group-label"
+                                class="example-radio-group"
+                                name="{{ 'option ' + i}}"
+                                formControlName="option"
+                                >
+                                <mat-radio-button class="example-radio-button" *ngFor="let option of question[0]" [value]="option.iscorrect">
+                                    {{option.description}}
+                                </mat-radio-button>
+                                </mat-radio-group>
+                                <div>
+                                    <button *ngIf="i!==0" mat-button class="back" matStepperPrevious>Back</button>
+                                    <button *ngIf="i===QuizList.length-1" mat-button class="submit" type="submit">Submit</button>&nbsp;
+                                    <button *ngIf="i!==QuizList.length-1" mat-button class="next" type="button" matStepperNext>Next</button>          
+                                </div>
+                    </mat-step>
+                </div>
+                
+            </mat-horizontal-stepper>
+            
+        </div>
+    </form>
+    </mat-card-content>
+    </mat-card>
+</div>
+<div fxLayoutAlign="center">
+    <mat-spinner *ngIf="loading"></mat-spinner>
+</div>

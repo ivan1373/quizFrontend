@@ -8,6 +8,7 @@
     <mat-nav-list>
       <a *ngIf="authenticationService.currentTokenValue === null" mat-list-item routerLink="login">Login</a>
       <a *ngIf="authenticationService.currentTokenValue === null" mat-list-item routerLink="register">Register</a>
+      <a *ngIf="authenticationService.currentTokenValue !== null" mat-list-item routerLink="quiz" routerLinkActive="active">Quizzes</a>
       <a *ngIf="authenticationService.currentTokenValue !== null" (click)="logoutUser()" mat-list-item>Logout</a>
     </mat-nav-list>
   </mat-sidenav>
@@ -21,7 +22,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-hidden="false" aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span routerLink="" routerLinkActive="active">QuizApp</span>
+      <span id="title" routerLink="" routerLinkActive="active" mat-menu-item>QuizApp</span>
 
       <span class="example-spacer"></span>
       <div *ngIf="displayUserMenu$ | async">

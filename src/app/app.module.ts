@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -18,13 +18,18 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { QuizComponent } from './quiz/quiz.component';
 import { CreateQuizComponent } from './create-quiz/create-quiz.component';
 import { AddQuestionComponent } from './add-question/add-question.component';
+import { NewGameComponent } from './new-game/new-game.component';
+import { HighscoresComponent } from './highscores/highscores.component';
+
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'quiz', component: QuizComponent},
-  { path: 'quiz/new', component: CreateQuizComponent}
+  { path: 'quiz/new', component: CreateQuizComponent},
+  { path: 'quiz/:id/newgame', component: NewGameComponent},
+  { path: 'quiz/:id/highscores', component: HighscoresComponent}
 ];
 
 @NgModule({
@@ -36,7 +41,9 @@ const appRoutes: Routes = [
     HomeComponent,
     QuizComponent,
     CreateQuizComponent,
-    AddQuestionComponent
+    AddQuestionComponent,
+    NewGameComponent,
+    HighscoresComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -11,25 +12,29 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, /*private as: AuthService*/) { }
+  error = false;
+
+  constructor(private formBuilder: FormBuilder, private router: Router, private as: AuthService) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       name: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      password_confirmation: ['', [Validators.required, Validators.minLength(6)]]
-  });
+      password_confirmation: ['', Validators.required]
+    });
   }
 
   toLogin() {
     this.router.navigate(['/login']);
   }
 
+  get f() { return this.registerForm.controls; }
+
   registerUser() {
     console.log(this.registerForm.value);
     // stop here if form is invalid
-    /*if (this.registerForm.invalid) {
+    if (this.registerForm.invalid) {
       return;
     	}
 
@@ -37,13 +42,13 @@ export class RegisterComponent implements OnInit {
       .subscribe(
           data => {
               //this.alertService.success('Registration successful', true);
-              console.log('success!')
+              this.error = false;
               this.router.navigate(['/login']);
           },
           error => {
               //this.alertService.error(error);
-              console.log('success! ...not!')
-          });*/
+              this.error = true;
+          });
   }
 
 }

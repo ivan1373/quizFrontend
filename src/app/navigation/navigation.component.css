@@ -16,6 +16,11 @@
   z-index: 1;
 }
 
+#title {
+  color:white;
+  font-weight: bold;
+}
+
 .hidden { 
   display : none;
 }
