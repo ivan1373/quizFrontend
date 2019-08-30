@@ -20,16 +20,18 @@ import { CreateQuizComponent } from './create-quiz/create-quiz.component';
 import { AddQuestionComponent } from './add-question/add-question.component';
 import { NewGameComponent } from './new-game/new-game.component';
 import { HighscoresComponent } from './highscores/highscores.component';
+import { AdminGuard } from './guard/admin.guard';
+import { AuthGuard } from './guard/auth.guard';
 
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'quiz', component: QuizComponent},
-  { path: 'quiz/new', component: CreateQuizComponent},
-  { path: 'quiz/:id/newgame', component: NewGameComponent},
-  { path: 'quiz/:id/highscores', component: HighscoresComponent}
+  { path: 'quiz', component: QuizComponent, canActivate:[AuthGuard]},
+  { path: 'quiz/new', component: CreateQuizComponent, canActivate:[AuthGuard, AdminGuard]},
+  { path: 'quiz/:id/newgame', component: NewGameComponent, canActivate:[AuthGuard]},
+  { path: 'quiz/:id/highscores', component: HighscoresComponent, canActivate:[AuthGuard]}
 ];
 
 @NgModule({
@@ -58,7 +60,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    //{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],
   entryComponents: [AddQuestionComponent]
