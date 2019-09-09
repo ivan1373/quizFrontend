@@ -17,3 +17,7 @@ mat-card {
 .example-full-width {
     width: 100%;
   }
+
+:not(mat-icon) {
+    font-family: 'Poppins', sans-serif;
+  }

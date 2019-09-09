@@ -58,9 +58,9 @@
                                 </mat-radio-button>
                                 </mat-radio-group>
                                 <div>
-                                    <button *ngIf="i!==0" mat-button class="back" matStepperPrevious>Back</button>
-                                    <button *ngIf="i===QuizList.length-1" mat-button class="submit" type="submit">Submit</button>&nbsp;
-                                    <button *ngIf="i!==QuizList.length-1" mat-button class="next" type="button" matStepperNext>Next</button>          
+                                    <button *ngIf="i!==0" mat-button class="back" matStepperPrevious><mat-icon>chevron_left</mat-icon></button>
+                                    <button *ngIf="i===QuizList.length-1" mat-button class="submit" type="submit"><mat-icon>check</mat-icon></button>&nbsp;
+                                    <button *ngIf="i!==QuizList.length-1" mat-button class="next" type="button" matStepperNext><mat-icon>chevron_right</mat-icon></button>          
                                 </div>
                     </mat-step>
                 </div>

@@ -39,3 +39,8 @@ mat-card {
   margin-top: 50px;
   margin-bottom: 25px;
 }
+
+
+* {
+  font-family: 'Poppins', sans-serif;
+}

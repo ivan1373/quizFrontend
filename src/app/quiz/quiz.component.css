@@ -5,3 +5,7 @@ a{
   text-decoration: none;
   font-weight: bold;
 }
+
+:not(mat-icon) {
+  font-family: 'Poppins', sans-serif;
+}

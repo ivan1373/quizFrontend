@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuizService } from '../services/quiz.service';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -26,6 +26,7 @@ export class NewGameComponent implements OnInit {
     private sService: ScoreService,
     private fb :FormBuilder,
     private _snackBar: MatSnackBar,
+    private router: Router
     //private stepper: MatStepper
     ) {
       
@@ -141,19 +142,22 @@ export class NewGameComponent implements OnInit {
       data => {
         /*this.submitted = true;*/
         this.loading = false;
-        this.gameForm.reset();
         //this.stepper.reset()
         if(data.amount >= 5)
         { 
           this._snackBar.open('Congrats!','',{
-            duration: 2000
+            duration: 1500
           });
+          this.gameForm.reset();
+          this.router.navigate(['../quiz/' + this.id + '/highscores']);
         }
         else
         {
           this._snackBar.open("Come back when you're ready!",'',{
-            duration: 2000
+            duration: 1500
           });
+          this.gameForm.reset();
+          this.router.navigate(['../quiz/' + this.id + '/highscores']);
         }
       }
     )

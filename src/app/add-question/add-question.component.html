@@ -10,7 +10,7 @@
         </div><br>
         <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="30px" fxLayoutAlign="center">
             <div fxFlexFill>
-                <label id="example-radio-group-label">Number of options {{data.quiz_id}}</label><br>
+                <label id="example-radio-group-label">Number of options</label><br>
               <!--  <mat-radio-group class="example-full-width" aria-label="Select an option">
                     <mat-radio-button value="2">2</mat-radio-button><br>
                     <mat-radio-button value="3">3</mat-radio-button><br>
@@ -70,10 +70,10 @@
         <br>
         <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="30px">
             <div fxFlex="50%">
-                <button mat-flat-button color="warn" (click)="clickBack()" fxFlexFill><mat-icon>arrow_left</mat-icon> Back</button>
+                <button mat-flat-button color="warn" (click)="clickBack()" fxFlexFill><mat-icon>chevron_left</mat-icon></button>
             </div>
             <div fxFlex="50%">
-                <button type="submit" [disabled]="questionForm.invalid" mat-flat-button color="primary" fxFlexFill><mat-icon>add</mat-icon> Create</button>
+                <button type="submit" [disabled]="questionForm.invalid" mat-flat-button color="primary" fxFlexFill><mat-icon>check</mat-icon></button>
             </div>
         </div><br>
         <mat-spinner *ngIf="loading"></mat-spinner>

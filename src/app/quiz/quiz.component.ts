@@ -18,7 +18,7 @@ export class QuizComponent implements OnInit {
 
   //dialogRef: MatDialogRef;
 
-  displayedColumns: string[] = ['id', 'title', 'description', 'question_count', 'action', 'delete'];
+  displayedColumns: string[] = ['title', 'description', 'question_count', 'add', 'play', 'delete'];
   
   constructor(private qService: QuizService, private dialog: MatDialog, private _snackBar: MatSnackBar) {
     

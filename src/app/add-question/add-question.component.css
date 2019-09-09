@@ -18,3 +18,7 @@
 .example-radio-button {
   margin: 5px;
 }
+
+:not(mat-icon) {
+  font-family: 'Poppins', sans-serif;
+}

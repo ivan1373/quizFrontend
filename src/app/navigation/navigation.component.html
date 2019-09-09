@@ -26,8 +26,8 @@
 
       <span class="example-spacer"></span>
       <div *ngIf="displayUserMenu$ | async">
-        <button mat-button routerLink="quiz" routerLinkActive="active">Quizzes</button>
-        <button mat-button [matMenuTriggerFor]="animals">User</button>
+        <button mat-button routerLink="quiz" routerLinkActive="active"><mat-icon>list</mat-icon> Quizzes</button>
+        <button mat-button [matMenuTriggerFor]="animals"><mat-icon>person</mat-icon> User</button>
         <mat-menu #animals="matMenu">
           <button *ngIf="authenticationService.currentTokenValue === null" mat-menu-item routerLink="login">Login</button>
           <button *ngIf="authenticationService.currentTokenValue === null" mat-menu-item routerLink="register">Register</button>

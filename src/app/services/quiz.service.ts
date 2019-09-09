@@ -26,18 +26,7 @@ export class QuizService {
   getQuestionsAndOptions(id: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.ROOT_URL}/${id}`);
   }
-/*
-  updateNote (title: string, content: string, id: number): Observable<Note> {
-    return this.http.put<Note>(`${this.ROOT_URL}/${id}/edit`, { title, content })
-      .pipe(
-        
-      );
-  }
 
-  show(id: number) {
-    return this.http.get<Note>(`${this.ROOT_URL}/${id}`);
-  }
-*/
   destroyQuiz(id: number): Observable<{}> {
     return this.http.delete(`${this.ROOT_URL}/${id}`);
   }

@@ -16,7 +16,7 @@ export class ScoreService {
     return this.http.post<Score>(`${this.ROOT_URL}/create`, { amount, quiz_id });
   }
 
-  getScores(quiz_id: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.ROOT_URL}/${quiz_id}`);
+  getScores(quiz_id: number): Observable<Score[]> {
+    return this.http.get<Score[]>(`${this.ROOT_URL}/${quiz_id}`);
   }
 }

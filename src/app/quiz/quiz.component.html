@@ -21,10 +21,6 @@
                 <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
             </mat-form-field>
             <table mat-table [dataSource]="dataSource" fxFlexFill>
-              <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef> ID </th>
-                <td mat-cell *matCellDef="let quiz"> {{quiz.id}} </td>
-              </ng-container>
               <ng-container matColumnDef="title">
                 <th mat-header-cell *matHeaderCellDef> Name </th>
                 <td mat-cell *matCellDef="let quiz"> <a routerLink="{{quiz.id}}/highscores">{{quiz.title}}</a> </td>
@@ -37,14 +33,19 @@
                 <th mat-header-cell *matHeaderCellDef> Number of Questions </th>
                 <td mat-cell *matCellDef="let quiz"> {{quiz.question_count}} </td>
               </ng-container>
-              <ng-container matColumnDef="action">
-                <th mat-header-cell *matHeaderCellDef> Action </th>
-                <td mat-cell *matCellDef="let quiz"> <button mat-raised-button color="accent" (click)="openDialog(quiz.id)">Add Question</button> &nbsp; 
-                  <button mat-raised-button routerLink="{{quiz.id}}/newgame" style="background-color: green;color:white;" *ngIf="quiz.question_count >=  5">Play</button> </td>
+              <ng-container matColumnDef="add">
+                <th mat-header-cell *matHeaderCellDef> Add </th>
+                <td mat-cell *matCellDef="let quiz"> <button mat-raised-button color="accent" (click)="openDialog(quiz.id)"><mat-icon>add_circle</mat-icon></button>
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="play">
+                <th mat-header-cell *matHeaderCellDef> Play </th>
+                <td mat-cell *matCellDef="let quiz"> 
+                  <button *ngIf="quiz.question_count >=  5" mat-raised-button routerLink="{{quiz.id}}/newgame" style="background-color: green;color:white;"><mat-icon>play_arrow</mat-icon></button> </td>
               </ng-container>
               <ng-container matColumnDef="delete">
-                <th mat-header-cell *matHeaderCellDef> Delete Quiz </th>
-                <td mat-cell *matCellDef="let quiz"> <button mat-fab (click)="onDelete($event,quiz.id)" color="warn">Delete</button> </td>
+                <th mat-header-cell *matHeaderCellDef> Delete </th>
+                <td mat-cell *matCellDef="let quiz"> <button mat-fab (click)="onDelete($event,quiz.id)" color="warn"><mat-icon>delete</mat-icon></button> </td>
               </ng-container>
               <ng-container matColumnDef="disclaimer">
                 <td mat-footer-cell *matFooterCellDef colspan="2">

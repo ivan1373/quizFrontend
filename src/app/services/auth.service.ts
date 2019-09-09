@@ -45,11 +45,6 @@ export class AuthService {
 
   }
 
-  getUser(): Observable<User> {
-    return this.http.get<User>(`${this.ROOT_URL}/user`);    
-  }
-
-  
 
   logout() {
     // remove user from local storage to log user out
